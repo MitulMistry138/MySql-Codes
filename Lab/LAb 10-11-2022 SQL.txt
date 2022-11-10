@@ -1,0 +1,323 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use empdb
+Database changed
+mysql> create database GamesDb;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> show databases
+    -> show databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'show databases' at line 2
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| countrydb          |
+| empdb              |
+| employeesystem     |
+| gamesdb            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.01 sec)
+
+mysql> create table valorant(
+    -> valo_id int not null auto_increment,
+    -> valo_igname varchar(20) not null,
+    -> valo_role varchar(20) not null,
+    -> age int not null,
+    -> primary key(valo_id)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc valorant
+    -> desc valorant;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'desc valorant' at line 2
+mysql> desc valorant;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| valo_id     | int         | NO   | PRI | NULL    | auto_increment |
+| valo_igname | varchar(20) | NO   |     | NULL    |                |
+| valo_role   | varchar(20) | NO   |     | NULL    |                |
+| age         | int         | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> create table pubg(
+    -> pubg_id int not null auto_increment,
+    -> pubg_igname varchar(20) not null,
+    -> pubg_role varchar(20) not null,
+    -> age int not null,
+    -> region varchar(40) not null,
+    -> primary key(pubg_id)
+    -> );
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc pubg;
++-------------+-------------+------+-----+---------+----------------+
+| Field       | Type        | Null | Key | Default | Extra          |
++-------------+-------------+------+-----+---------+----------------+
+| pubg_id     | int         | NO   | PRI | NULL    | auto_increment |
+| pubg_igname | varchar(20) | NO   |     | NULL    |                |
+| pubg_role   | varchar(20) | NO   |     | NULL    |                |
+| age         | int         | NO   |     | NULL    |                |
+| region      | varchar(40) | NO   |     | NULL    |                |
++-------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into valorant(valo_id,valo_igname,valo_role,age)values(9863,'Amaterasu','Sentinal',20);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from valorant;
++---------+-------------+-----------+-----+
+| valo_id | valo_igname | valo_role | age |
++---------+-------------+-----------+-----+
+|    9863 | Amaterasu   | Sentinal  |  20 |
++---------+-------------+-----------+-----+
+1 row in set (0.00 sec)
+
+mysql> insert into valorant values(9115,'Hades','Initiator',19);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into valorant values(6318,'Fragmayo','Duelist',22);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into valorant values(1381,'Pyro','Controller',20);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into valorant values(1826,'Paragod','Coach',25);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into valorant values(1111,'Tenz','Duelist',25);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from valorant;
++---------+-------------+------------+-----+
+| valo_id | valo_igname | valo_role  | age |
++---------+-------------+------------+-----+
+|    1111 | Tenz        | Duelist    |  25 |
+|    1381 | Pyro        | Controller |  20 |
+|    1826 | Paragod     | Coach      |  25 |
+|    6318 | Fragmayo    | Duelist    |  22 |
+|    9115 | Hades       | Initiator  |  19 |
+|    9863 | Amaterasu   | Sentinal   |  20 |
++---------+-------------+------------+-----+
+6 rows in set (0.00 sec)
+
+mysql> select * from pubg;
+Empty set (0.00 sec)
+
+mysql> insert into pubg(pubg_id,pubg_igname,pubg_role,age,region)values(77895,'Nailer','Sniper',22,'Asia');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into pubg values(1111,'Tenz','',22);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into pubg values(78887,'Siberian','Assaulter',22,'Asia');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into pubg values(74567,'Eupho','Support Assaulter',19,'Europe');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into pubg values(65921,'SK','Medic',20,'SA');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into pubg values(12456,'Fragger','Scoutt',22,'Asia');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from pubg;
++---------+-------------+-------------------+-----+--------+
+| pubg_id | pubg_igname | pubg_role         | age | region |
++---------+-------------+-------------------+-----+--------+
+|   12456 | Fragger     | Scoutt            |  22 | Asia   |
+|   65921 | SK          | Medic             |  20 | SA     |
+|   74567 | Eupho       | Support Assaulter |  19 | Europe |
+|   77895 | Nailer      | Sniper            |  22 | Asia   |
+|   78887 | Siberian    | Assaulter         |  22 | Asia   |
++---------+-------------+-------------------+-----+--------+
+5 rows in set (0.00 sec)
+
+mysql> insert into pubg values(1111,'Tenz','Duelist',25,'NA');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into pubg values(1381,'Pyro','CA',25,'NE');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from pubg;
++---------+-------------+-------------------+-----+--------+
+| pubg_id | pubg_igname | pubg_role         | age | region |
++---------+-------------+-------------------+-----+--------+
+|    1111 | Tenz        | Duelist           |  25 | NA     |
+|    1381 | Pyro        | CA                |  25 | NE     |
+|   12456 | Fragger     | Scoutt            |  22 | Asia   |
+|   65921 | SK          | Medic             |  20 | SA     |
+|   74567 | Eupho       | Support Assaulter |  19 | Europe |
+|   77895 | Nailer      | Sniper            |  22 | Asia   |
+|   78887 | Siberian    | Assaulter         |  22 | Asia   |
++---------+-------------+-------------------+-----+--------+
+7 rows in set (0.00 sec)
+
+mysql> select valo_igname,valo_role,pubg_igname,pubg_role
+    -> from valorant
+    -> INNER JOIN pubg
+    -> ON valo_id=pubg_id;
++-------------+------------+-------------+-----------+
+| valo_igname | valo_role  | pubg_igname | pubg_role |
++-------------+------------+-------------+-----------+
+| Tenz        | Duelist    | Tenz        | Duelist   |
+| Pyro        | Controller | Pyro        | CA        |
++-------------+------------+-------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select valo_igname,valo_role,pubg_igname
+    -> from valorant
+    -> LEFT JOIN pubg
+    -> ON valo_id=pubg_id;
++-------------+------------+-------------+
+| valo_igname | valo_role  | pubg_igname |
++-------------+------------+-------------+
+| Tenz        | Duelist    | Tenz        |
+| Pyro        | Controller | Pyro        |
+| Paragod     | Coach      | NULL        |
+| Fragmayo    | Duelist    | NULL        |
+| Hades       | Initiator  | NULL        |
+| Amaterasu   | Sentinal   | NULL        |
++-------------+------------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> select valo_igname,valo_role,pubg_igname
+    -> from valorant
+    -> RIGHT JOIN pubg
+    -> ON valo_id=pubg_id;
++-------------+------------+-------------+
+| valo_igname | valo_role  | pubg_igname |
++-------------+------------+-------------+
+| Tenz        | Duelist    | Tenz        |
+| Pyro        | Controller | Pyro        |
+| NULL        | NULL       | Fragger     |
+| NULL        | NULL       | SK          |
+| NULL        | NULL       | Eupho       |
+| NULL        | NULL       | Nailer      |
+| NULL        | NULL       | Siberian    |
++-------------+------------+-------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from valorant full join pubg;
++---------+-------------+------------+-----+---------+-------------+-------------------+-----+--------+
+| valo_id | valo_igname | valo_role  | age | pubg_id | pubg_igname | pubg_role         | age | region |
++---------+-------------+------------+-----+---------+-------------+-------------------+-----+--------+
+|    9863 | Amaterasu   | Sentinal   |  20 |    1111 | Tenz        | Duelist           |  25 | NA     |
+|    9115 | Hades       | Initiator  |  19 |    1111 | Tenz        | Duelist           |  25 | NA     |
+|    6318 | Fragmayo    | Duelist    |  22 |    1111 | Tenz        | Duelist           |  25 | NA     |
+|    1826 | Paragod     | Coach      |  25 |    1111 | Tenz        | Duelist           |  25 | NA     |
+|    1381 | Pyro        | Controller |  20 |    1111 | Tenz        | Duelist           |  25 | NA     |
+|    1111 | Tenz        | Duelist    |  25 |    1111 | Tenz        | Duelist           |  25 | NA     |
+|    9863 | Amaterasu   | Sentinal   |  20 |    1381 | Pyro        | CA                |  25 | NE     |
+|    9115 | Hades       | Initiator  |  19 |    1381 | Pyro        | CA                |  25 | NE     |
+|    6318 | Fragmayo    | Duelist    |  22 |    1381 | Pyro        | CA                |  25 | NE     |
+|    1826 | Paragod     | Coach      |  25 |    1381 | Pyro        | CA                |  25 | NE     |
+|    1381 | Pyro        | Controller |  20 |    1381 | Pyro        | CA                |  25 | NE     |
+|    1111 | Tenz        | Duelist    |  25 |    1381 | Pyro        | CA                |  25 | NE     |
+|    9863 | Amaterasu   | Sentinal   |  20 |   12456 | Fragger     | Scoutt            |  22 | Asia   |
+|    9115 | Hades       | Initiator  |  19 |   12456 | Fragger     | Scoutt            |  22 | Asia   |
+|    6318 | Fragmayo    | Duelist    |  22 |   12456 | Fragger     | Scoutt            |  22 | Asia   |
+|    1826 | Paragod     | Coach      |  25 |   12456 | Fragger     | Scoutt            |  22 | Asia   |
+|    1381 | Pyro        | Controller |  20 |   12456 | Fragger     | Scoutt            |  22 | Asia   |
+|    1111 | Tenz        | Duelist    |  25 |   12456 | Fragger     | Scoutt            |  22 | Asia   |
+|    9863 | Amaterasu   | Sentinal   |  20 |   65921 | SK          | Medic             |  20 | SA     |
+|    9115 | Hades       | Initiator  |  19 |   65921 | SK          | Medic             |  20 | SA     |
+|    6318 | Fragmayo    | Duelist    |  22 |   65921 | SK          | Medic             |  20 | SA     |
+|    1826 | Paragod     | Coach      |  25 |   65921 | SK          | Medic             |  20 | SA     |
+|    1381 | Pyro        | Controller |  20 |   65921 | SK          | Medic             |  20 | SA     |
+|    1111 | Tenz        | Duelist    |  25 |   65921 | SK          | Medic             |  20 | SA     |
+|    9863 | Amaterasu   | Sentinal   |  20 |   74567 | Eupho       | Support Assaulter |  19 | Europe |
+|    9115 | Hades       | Initiator  |  19 |   74567 | Eupho       | Support Assaulter |  19 | Europe |
+|    6318 | Fragmayo    | Duelist    |  22 |   74567 | Eupho       | Support Assaulter |  19 | Europe |
+|    1826 | Paragod     | Coach      |  25 |   74567 | Eupho       | Support Assaulter |  19 | Europe |
+|    1381 | Pyro        | Controller |  20 |   74567 | Eupho       | Support Assaulter |  19 | Europe |
+|    1111 | Tenz        | Duelist    |  25 |   74567 | Eupho       | Support Assaulter |  19 | Europe |
+|    9863 | Amaterasu   | Sentinal   |  20 |   77895 | Nailer      | Sniper            |  22 | Asia   |
+|    9115 | Hades       | Initiator  |  19 |   77895 | Nailer      | Sniper            |  22 | Asia   |
+|    6318 | Fragmayo    | Duelist    |  22 |   77895 | Nailer      | Sniper            |  22 | Asia   |
+|    1826 | Paragod     | Coach      |  25 |   77895 | Nailer      | Sniper            |  22 | Asia   |
+|    1381 | Pyro        | Controller |  20 |   77895 | Nailer      | Sniper            |  22 | Asia   |
+|    1111 | Tenz        | Duelist    |  25 |   77895 | Nailer      | Sniper            |  22 | Asia   |
+|    9863 | Amaterasu   | Sentinal   |  20 |   78887 | Siberian    | Assaulter         |  22 | Asia   |
+|    9115 | Hades       | Initiator  |  19 |   78887 | Siberian    | Assaulter         |  22 | Asia   |
+|    6318 | Fragmayo    | Duelist    |  22 |   78887 | Siberian    | Assaulter         |  22 | Asia   |
+|    1826 | Paragod     | Coach      |  25 |   78887 | Siberian    | Assaulter         |  22 | Asia   |
+|    1381 | Pyro        | Controller |  20 |   78887 | Siberian    | Assaulter         |  22 | Asia   |
+|    1111 | Tenz        | Duelist    |  25 |   78887 | Siberian    | Assaulter         |  22 | Asia   |
++---------+-------------+------------+-----+---------+-------------+-------------------+-----+--------+
+42 rows in set (0.00 sec)
+
+mysql> select * from student cross join valorant
+    -> select * from student cross join valorant;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * from student cross join valorant' at line 2
+mysql> select * from student cross join valorant;
+ERROR 1146 (42S02): Table 'empdb.student' doesn't exist
+mysql> select * from pubg cross join valorant;
++---------+-------------+-------------------+-----+--------+---------+-------------+------------+-----+
+| pubg_id | pubg_igname | pubg_role         | age | region | valo_id | valo_igname | valo_role  | age |
++---------+-------------+-------------------+-----+--------+---------+-------------+------------+-----+
+|    1111 | Tenz        | Duelist           |  25 | NA     |    9863 | Amaterasu   | Sentinal   |  20 |
+|    1111 | Tenz        | Duelist           |  25 | NA     |    9115 | Hades       | Initiator  |  19 |
+|    1111 | Tenz        | Duelist           |  25 | NA     |    6318 | Fragmayo    | Duelist    |  22 |
+|    1111 | Tenz        | Duelist           |  25 | NA     |    1826 | Paragod     | Coach      |  25 |
+|    1111 | Tenz        | Duelist           |  25 | NA     |    1381 | Pyro        | Controller |  20 |
+|    1111 | Tenz        | Duelist           |  25 | NA     |    1111 | Tenz        | Duelist    |  25 |
+|    1381 | Pyro        | CA                |  25 | NE     |    9863 | Amaterasu   | Sentinal   |  20 |
+|    1381 | Pyro        | CA                |  25 | NE     |    9115 | Hades       | Initiator  |  19 |
+|    1381 | Pyro        | CA                |  25 | NE     |    6318 | Fragmayo    | Duelist    |  22 |
+|    1381 | Pyro        | CA                |  25 | NE     |    1826 | Paragod     | Coach      |  25 |
+|    1381 | Pyro        | CA                |  25 | NE     |    1381 | Pyro        | Controller |  20 |
+|    1381 | Pyro        | CA                |  25 | NE     |    1111 | Tenz        | Duelist    |  25 |
+|   12456 | Fragger     | Scoutt            |  22 | Asia   |    9863 | Amaterasu   | Sentinal   |  20 |
+|   12456 | Fragger     | Scoutt            |  22 | Asia   |    9115 | Hades       | Initiator  |  19 |
+|   12456 | Fragger     | Scoutt            |  22 | Asia   |    6318 | Fragmayo    | Duelist    |  22 |
+|   12456 | Fragger     | Scoutt            |  22 | Asia   |    1826 | Paragod     | Coach      |  25 |
+|   12456 | Fragger     | Scoutt            |  22 | Asia   |    1381 | Pyro        | Controller |  20 |
+|   12456 | Fragger     | Scoutt            |  22 | Asia   |    1111 | Tenz        | Duelist    |  25 |
+|   65921 | SK          | Medic             |  20 | SA     |    9863 | Amaterasu   | Sentinal   |  20 |
+|   65921 | SK          | Medic             |  20 | SA     |    9115 | Hades       | Initiator  |  19 |
+|   65921 | SK          | Medic             |  20 | SA     |    6318 | Fragmayo    | Duelist    |  22 |
+|   65921 | SK          | Medic             |  20 | SA     |    1826 | Paragod     | Coach      |  25 |
+|   65921 | SK          | Medic             |  20 | SA     |    1381 | Pyro        | Controller |  20 |
+|   65921 | SK          | Medic             |  20 | SA     |    1111 | Tenz        | Duelist    |  25 |
+|   74567 | Eupho       | Support Assaulter |  19 | Europe |    9863 | Amaterasu   | Sentinal   |  20 |
+|   74567 | Eupho       | Support Assaulter |  19 | Europe |    9115 | Hades       | Initiator  |  19 |
+|   74567 | Eupho       | Support Assaulter |  19 | Europe |    6318 | Fragmayo    | Duelist    |  22 |
+|   74567 | Eupho       | Support Assaulter |  19 | Europe |    1826 | Paragod     | Coach      |  25 |
+|   74567 | Eupho       | Support Assaulter |  19 | Europe |    1381 | Pyro        | Controller |  20 |
+|   74567 | Eupho       | Support Assaulter |  19 | Europe |    1111 | Tenz        | Duelist    |  25 |
+|   77895 | Nailer      | Sniper            |  22 | Asia   |    9863 | Amaterasu   | Sentinal   |  20 |
+|   77895 | Nailer      | Sniper            |  22 | Asia   |    9115 | Hades       | Initiator  |  19 |
+|   77895 | Nailer      | Sniper            |  22 | Asia   |    6318 | Fragmayo    | Duelist    |  22 |
+|   77895 | Nailer      | Sniper            |  22 | Asia   |    1826 | Paragod     | Coach      |  25 |
+|   77895 | Nailer      | Sniper            |  22 | Asia   |    1381 | Pyro        | Controller |  20 |
+|   77895 | Nailer      | Sniper            |  22 | Asia   |    1111 | Tenz        | Duelist    |  25 |
+|   78887 | Siberian    | Assaulter         |  22 | Asia   |    9863 | Amaterasu   | Sentinal   |  20 |
+|   78887 | Siberian    | Assaulter         |  22 | Asia   |    9115 | Hades       | Initiator  |  19 |
+|   78887 | Siberian    | Assaulter         |  22 | Asia   |    6318 | Fragmayo    | Duelist    |  22 |
+|   78887 | Siberian    | Assaulter         |  22 | Asia   |    1826 | Paragod     | Coach      |  25 |
+|   78887 | Siberian    | Assaulter         |  22 | Asia   |    1381 | Pyro        | Controller |  20 |
+|   78887 | Siberian    | Assaulter         |  22 | Asia   |    1111 | Tenz        | Duelist    |  25 |
++---------+-------------+-------------------+-----+--------+---------+-------------+------------+-----+
+42 rows in set (0.00 sec)
+
+mysql>
